@@ -1,10 +1,10 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
-    "/Users/daltonic/Sites/dappVotes/contracts/DappVotes.sol": {
-      "lastModificationDate": 1692973875640,
-      "contentHash": "2a66f25c242d4b38862f99d48bb3aa04",
-      "sourceName": "contracts/DappVotes.sol",
+    "C:\\Users\\USER\\d-voting-app\\dappVote\\contracts\\src\\DappVote.sol": {
+      "lastModificationDate": 1719521670886,
+      "contentHash": "d29d17ab653b2062bd79054a14932bb2",
+      "sourceName": "contracts/src/DappVote.sol",
       "solcConfig": {
         "version": "0.8.17",
         "settings": {
@@ -38,8 +38,8 @@
         "DappVotes"
       ]
     },
-    "/Users/daltonic/Sites/dappVotes/node_modules/@openzeppelin/contracts/utils/Counters.sol": {
-      "lastModificationDate": 1692277264042,
+    "C:\\Users\\USER\\d-voting-app\\dappVote\\node_modules\\@openzeppelin\\contracts\\utils\\Counters.sol": {
+      "lastModificationDate": 1719248579857,
       "contentHash": "74654e3ae5d7f39555055dfe244dab7a",
       "sourceName": "@openzeppelin/contracts/utils/Counters.sol",
       "solcConfig": {

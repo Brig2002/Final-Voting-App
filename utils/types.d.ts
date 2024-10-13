@@ -39,19 +39,17 @@ export interface ContestantStruct {
 }
 
 export interface GlobalState {
-  wallet: string
-  createModal: string
-  updateModal: string
-  deleteModal: string
-  contestModal: string
-  chatModal: string
+  wallet: string 
+  createModal: string 
+  updateModal: string 
+  deleteModal: string 
+  contestModal: string 
   polls: PollStruct[]
   poll: PollStruct | null
-  group: PollStruct | null
   contestants: ContestantStruct[]
-  currentUser: PollStruct | null
 }
 
 export interface RootState {
+  global: any
   globalStates: GlobalState
 }

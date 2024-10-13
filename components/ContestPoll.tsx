@@ -7,9 +7,11 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
 const ContestPoll: React.FC<{ poll: PollStruct }> = ({ poll }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch() 
   const { setContestModal } = globalActions
-  const { wallet, contestModal } = useSelector((states: RootState) => states.globalStates)
+  const {contestModal} =useSelector((states: RootState) => states.globalStates)
+  
+  
 
   const [contestant, setContestant] = useState({
     name: '',
@@ -28,24 +30,23 @@ const ContestPoll: React.FC<{ poll: PollStruct }> = ({ poll }) => {
     e.preventDefault()
 
     if (!contestant.name || !contestant.image) return
-    if (wallet === '') return toast.warning('Connect wallet first!')
 
     await toast.promise(
-      new Promise<void>((resolve, reject) => {
-        contestPoll(poll.id, contestant.name, contestant.image)
+      new Promise<void>((resolve, reject) =>{
+        contestPoll(poll.id,contestant.name,contestant.image)
           .then((tx) => {
-            closeModal()
+            closeModal
             console.log(tx)
             resolve(tx)
           })
           .catch((error) => reject(error))
       }),
       {
-        pending: 'Approve transaction...',
-        success: 'Poll contested successfully 👌',
-        error: 'Encountered error 🤯',
+        pending: 'Approve transaction',
+        success: 'Poll contested successfully',
+        error: 'Encountered error'
       }
-    )
+     )
   }
 
   const closeModal = () => {

@@ -7,9 +7,9 @@ import { useDispatch, useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
 const CreatePoll: React.FC = () => {
-  const dispatch = useDispatch()
-  const { setCreateModal } = globalActions
-  const { wallet, createModal } = useSelector((states: RootState) => states.globalStates)
+  const createModal = useSelector((stateToJSON: RootState) => stateToJSON.global)
+  const dispatch = useDispatch() 
+  const { setPolls } = globalActions
 
   const [poll, setPoll] = useState<PollParams>({
     image: '',
@@ -23,27 +23,25 @@ const CreatePoll: React.FC = () => {
     e.preventDefault()
 
     if (!poll.image || !poll.title || !poll.description || !poll.startsAt || !poll.endsAt) return
-    if (wallet === '') return toast.warning('Connect wallet first!')
 
     poll.startsAt = new Date(poll.startsAt).getTime()
     poll.endsAt = new Date(poll.endsAt).getTime()
-
     await toast.promise(
-      new Promise<void>((resolve, reject) => {
+      new Promise<void>((resolve, reject) =>{
         createPoll(poll)
-          .then((tx) => {
-            closeModal()
+          .then((tx: void | PromiseLike<void>) => {
+            closeModal
             console.log(tx)
             resolve(tx)
           })
-          .catch((error) => reject(error))
+          .catch((error: any) => reject(error))
       }),
       {
-        pending: 'Approve transaction...',
-        success: 'Poll created successfully 👌',
-        error: 'Encountered error 🤯',
+        pending: 'Approve transaction',
+        success: 'Poll created successfully',
+        error: 'Encountered error'
       }
-    )
+     )
   }
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -55,7 +53,7 @@ const CreatePoll: React.FC = () => {
   }
 
   const closeModal = () => {
-    dispatch(setCreateModal('scale-0'))
+    dispatch(createModal('scale-0'))
     setPoll({
       image: '',
       title: '',
